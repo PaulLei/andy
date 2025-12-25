@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
+//advik
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
