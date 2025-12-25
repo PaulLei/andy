@@ -17,17 +17,15 @@ export default function Hero() {
           }`}
         >
           <h1 className="text-5xl md:text-7xl font-extralight mb-6 tracking-tight">
-            The best present is a
+            Empowering Providers, Transforming Lives:
             <br />
-            <span className="font-light">healthier future</span>
+            <span className="font-light">EEG Analytics for Diagnostic Excellence</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600 font-light max-w-2xl mx-auto mb-12">
-            Give the gift of better health with Oura Ring 4. Advanced sensors
-            track sleep, activity, and wellness metrics to help you live your
-            best life.
+            Neurologic Solutions is pioneering precision in neuroimaging - empowering clinicians for accurate epilespy detection and optimal treatment
           </p>
           <button className="bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 transition-all duration-300 inline-flex items-center space-x-2 group">
-            <span>Shop Now</span>
+            <span>Learn More</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
