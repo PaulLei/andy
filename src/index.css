@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ✅ Define your navbar height once */
+:root {
+  --nav-h: 96px; /* change this to match your navbar height */
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -17,18 +22,28 @@
 }
 
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-in-out;
-  }
-
-  @keyframes fadeIn {
-    from {
+  @keyframes fadeInUp {
+    0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(14px);
     }
-    to {
+    100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* ✅ "both" means it keeps the final state (opacity:1) */
+  .animate-fade-in {
+    animation: fadeInUp 800ms ease-out both;
+  }
+
+  /* Optional: accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in {
+      animation: none;
+      opacity: 1;
+      transform: none;
     }
   }
 }

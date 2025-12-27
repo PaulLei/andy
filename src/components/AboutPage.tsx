@@ -12,24 +12,24 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-white overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32 overflow-hidden">
+      {/* Hero Section (✅ centered in remaining viewport below navbar) */}
+      <section
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{ minHeight: 'calc(100vh - var(--nav-h))' }}
+      >
         <div className="absolute inset-0 z-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
           <div
             className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-200/20 rounded-full blur-3xl"
-            style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
-            }}
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
           ></div>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <div className="mb-6 inline-block">
-            <span className="text-xs tracking-widest uppercase text-blue-600 font-semibold">
-              Our Mission
-            </span>
-          </div>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center justify-center">
+          <span className="text-xs tracking-widest uppercase text-blue-600 font-semibold mb-6">
+            Our Mission
+          </span>
+
           <h1 className="text-6xl md:text-7xl font-extralight mb-8 leading-tight">
             Transforming
             <br />
@@ -37,15 +37,16 @@ export default function AboutPage() {
               Neurological Care
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
+
+          <p className="text-xl md:text-2xl text-gray-600 font-light max-w-3xl leading-relaxed">
             We're building the future of epilepsy diagnosis and treatment through
             advanced EEG analytics that empower clinicians with precision insights.
           </p>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
           <div className="w-8 h-12 border-2 border-gray-400 rounded-full flex items-center justify-center">
-            <div className="w-1 h-2 bg-gray-400 rounded-full"></div>
+            <div className="w-1 h-2 bg-gray-400 rounded-full animate-bounce"></div>
           </div>
         </div>
       </section>
@@ -54,7 +55,7 @@ export default function AboutPage() {
       <section className="py-32 px-6 relative">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="opacity-0 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <span className="text-xs tracking-widest uppercase text-blue-600 font-semibold">
                 The Challenge
               </span>
@@ -75,7 +76,8 @@ export default function AboutPage() {
                 <ArrowRight className="w-5 h-5" />
               </div>
             </div>
-            <div className="relative opacity-0 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+
+            <div className="relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
               <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-12 aspect-square flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl font-extralight text-red-600 mb-4">40%</div>
@@ -94,6 +96,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
+
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-20">
             <span className="text-xs tracking-widest uppercase text-blue-300 font-semibold">
@@ -148,7 +151,7 @@ export default function AboutPage() {
                 icon: Heart,
                 title: 'Patient-Centric',
                 description:
-                  'Everything we do starts with the patient. Better diagnosis means better lives.',
+                  "Everything we do starts with the patient. Better diagnosis means better lives.",
               },
               {
                 icon: Users,
@@ -167,7 +170,7 @@ export default function AboutPage() {
               return (
                 <div
                   key={index}
-                  className="group opacity-0 animate-fade-in"
+                  className="group animate-fade-in"
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                 >
                   <div className="bg-gray-50 rounded-3xl p-8 hover:shadow-xl transition-all duration-300 h-full">
@@ -200,14 +203,34 @@ export default function AboutPage() {
 
           <div className="space-y-12">
             {[
-              { year: '2020', title: 'Founded', description: 'Neurologic Solutions established with a mission to revolutionize EEG analysis' },
-              { year: '2021', title: 'EpiScalp Launch', description: 'Release of our first product, EpiScalp, to early clinical partners' },
-              { year: '2023', title: 'EZTrack Launch', description: 'Introduction of EZTrack for surgical planning optimization' },
-              { year: '2024', title: 'Clinical Validation', description: 'Peer-reviewed publications validating our analytical approaches' },
+              {
+                year: '2020',
+                title: 'Founded',
+                description:
+                  'Neurologic Solutions established with a mission to revolutionize EEG analysis',
+              },
+              {
+                year: '2021',
+                title: 'EpiScalp Launch',
+                description:
+                  'Release of our first product, EpiScalp, to early clinical partners',
+              },
+              {
+                year: '2023',
+                title: 'EZTrack Launch',
+                description:
+                  'Introduction of EZTrack for surgical planning optimization',
+              },
+              {
+                year: '2024',
+                title: 'Clinical Validation',
+                description:
+                  'Peer-reviewed publications validating our analytical approaches',
+              },
             ].map((milestone, index) => (
               <div
                 key={index}
-                className="flex gap-8 md:gap-12 opacity-0 animate-fade-in"
+                className="flex gap-8 md:gap-12 animate-fade-in"
                 style={{ animationDelay: `${0.3 + index * 0.1}s` }}
               >
                 <div className="flex flex-col items-center">
@@ -216,12 +239,11 @@ export default function AboutPage() {
                     <div className="w-1 h-20 bg-gradient-to-b from-blue-600 to-transparent mt-4"></div>
                   )}
                 </div>
+
                 <div className="pb-8">
                   <span className="text-sm font-semibold text-blue-600">{milestone.year}</span>
                   <h3 className="text-2xl font-light mt-2 mb-3">{milestone.title}</h3>
-                  <p className="text-gray-600 font-light max-w-xl">
-                    {milestone.description}
-                  </p>
+                  <p className="text-gray-600 font-light max-w-xl">{milestone.description}</p>
                 </div>
               </div>
             ))}
@@ -238,6 +260,7 @@ export default function AboutPage() {
           <p className="text-xl text-gray-600 font-light mb-12">
             We're hiring exceptional people who believe in the power of precision medicine.
           </p>
+
           <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full hover:shadow-lg transition-all duration-300 inline-flex items-center space-x-2 group">
             <span>Explore Careers</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

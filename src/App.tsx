@@ -10,8 +10,8 @@ import PressSection from "./components/PressSection";
 import Footer from "./components/Footer";
 import EZTrack from "./components/EZTrack";
 import Episcalp from "./components/EpiScalp";
-import AboutPage from "./pages/AboutPage";
-import TeamPage from "./pages/TeamPage";
+import AboutPage from "./components/AboutPage";
+import TeamPage from "./components/TeamPage";
 
 function Home() {
   return (
