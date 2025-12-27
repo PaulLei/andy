@@ -10,6 +10,8 @@ import PressSection from "./components/PressSection";
 import Footer from "./components/Footer";
 import EZTrack from "./components/EZTrack";
 import Episcalp from "./components/EpiScalp";
+import AboutPage from "./pages/AboutPage";
+import TeamPage from "./pages/TeamPage";
 
 function Home() {
   return (
@@ -77,8 +79,24 @@ export default function App() {
 
           {/* Company */}
           <Route path="/company" element={<Placeholder title="Company" />} />
-          <Route path="/about-us" element={<Placeholder title="About us" />} />
-          <Route path="/team" element={<Placeholder title="Team" />} />
+          <Route
+            path="/about-us"
+            element={
+              <>
+                <AboutPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/team"
+            element={
+              <>
+                <TeamPage />
+                <Footer />
+              </>
+            }
+          />
           <Route path="/contact" element={<Placeholder title="Contact" />} />
 
           {/* Resources */}
