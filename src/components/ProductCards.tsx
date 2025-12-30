@@ -2,23 +2,25 @@ import { ArrowRight } from 'lucide-react';
 
 const products = [
   {
-    title: 'Oura Ring 4',
-    description: 'The most advanced health tracker',
+    title: 'EzTrack',
+    description: 'EZTrack is a software analytics tool that can be used to assist in Neurosurgical planning of Epilepsy cases.',
     price: 'From $349',
     gradient: 'from-slate-900 to-slate-700',
+    image: '/eztrack-sz.jpg',
   },
   {
-    title: 'Oura Ring 4 Ceramic',
-    description: 'Premium finish, advanced insights',
+    title: 'EpiScalp',
+    description: 'EpiScalp is a software analytics tool that can be used to assist in diagnosing new seizure onset cases.',
     price: 'From $499',
     gradient: 'from-gray-100 to-gray-300',
     dark: false,
+    image: '/Episcalp.jpg',
   },
 ];
 
 export default function ProductCards() {
   return (
-    <section className="py-24 px-6 bg-white">
+    <section className="py-24 px-6 bg-[#F2F6FA]">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {products.map((product, index) => (
@@ -46,7 +48,7 @@ export default function ProductCards() {
                     product.dark === false ? 'text-black' : 'text-white'
                   }`}
                 >
-                  {product.price}
+                 
                 </p>
               </div>
               <div className="relative z-10">
@@ -60,13 +62,11 @@ export default function ProductCards() {
                 </button>
               </div>
               <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-50 transition-opacity duration-500">
-                <div
-                  className={`w-64 h-64 rounded-full ${
-                    product.dark === false
-                      ? 'bg-gradient-to-br from-gray-300 to-gray-400'
-                      : 'bg-gradient-to-br from-gray-600 to-gray-800'
-                  } shadow-2xl`}
-                ></div>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-64 h-64 object-cover rounded-full shadow-2xl"
+                />
               </div>
             </div>
           ))}

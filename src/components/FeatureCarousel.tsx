@@ -42,9 +42,9 @@ export default function FeatureCarousel() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            Your health companion,
+            The EzTrack Process/Meet the team
             <br />
-            every moment of the day
+          
           </h2>
         </div>
 

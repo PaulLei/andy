@@ -5,7 +5,7 @@ import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import ProductCards from "./components/ProductCards";
 import FeatureCarousel from "./components/FeatureCarousel";
-import Testimonials from "./components/Testimonials";
+import Technology from "./components/technology.tsx";
 import PressSection from "./components/PressSection";
 import Footer from "./components/Footer";
 import EZTrack from "./components/EZTrack";
@@ -19,7 +19,7 @@ function Home() {
       <Hero />
       <ProductCards />
       <FeatureCarousel />
-      <Testimonials />
+      <Technology />
       <PressSection />
       <Footer />
     </>
