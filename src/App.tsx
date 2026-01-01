@@ -12,6 +12,10 @@ import EZTrack from "./components/EZTrack";
 import Episcalp from "./components/EpiScalp";
 import AboutPage from "./components/AboutPage";
 import TeamPage from "./components/TeamPage";
+import NewsPage from "./components/NewsPage";
+import PublicationsPage from "./components/PublicationsPage";
+import ContactPage from "./components/ContactPage";
+import SupportPage from "./components/SupportPage";
 
 function Home() {
   return (
@@ -73,7 +77,12 @@ export default function App() {
           />
           <Route
             path="/publications"
-            element={<Placeholder title="Publications" />}
+            element={
+              <>
+                <PublicationsPage />
+                <Footer />
+              </>
+            }
           />
           <Route path="/use-cases" element={<Placeholder title="Use cases" />} />
 
@@ -97,21 +106,48 @@ export default function App() {
               </>
             }
           />
-          <Route path="/contact" element={<Placeholder title="Contact" />} />
+          <Route
+            path="/contact"
+            element={
+              <>
+                <ContactPage />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/Contact-Us"
+            element={
+              <>
+                <ContactPage />
+                <Footer />
+              </>
+            }
+          />
 
           {/* Resources */}
           <Route path="/resources" element={<Placeholder title="Resources" />} />
-          <Route path="/blog-news" element={<Placeholder title="Blog / News" />} />
+          <Route
+            path="/blog-news"
+            element={
+              <>
+                <NewsPage />
+                <Footer />
+              </>
+            }
+          />
           <Route
             path="/for-investors"
             element={<Placeholder title="For Investors" />}
           />
-          <Route path="/support" element={<Placeholder title="Support" />} />
-
-          {/* Contact Us */}
           <Route
-            path="/Contact-Us"
-            element={<Placeholder title="Contact Us" />}
+            path="/support"
+            element={
+              <>
+                <SupportPage />
+                <Footer />
+              </>
+            }
           />
 
           {/* Catch-all */}
