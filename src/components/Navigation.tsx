@@ -1,21 +1,27 @@
-import { Search, Menu, ChevronDown } from "lucide-react";
+import { Search, Menu, ChevronDown, X } from "lucide-react";
 import Logo from "/neurologic_solutions.horizontal.color_.black_.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 interface NavigationProps {
   scrolled: boolean;
 }
 
 export default function Navigation({ scrolled }: NavigationProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(
+    null
+  );
+
   const navText = "text-black";
 
   const navBg = scrolled
-    ? "bg-neutral-100 shadow-sm shadow-black/10"
-    : "bg-neutral-100/90 backdrop-blur-md";
+    ? "bg-white shadow-md shadow-black/10"
+    : "bg-white/95 backdrop-blur-md";
 
   const panelBg = scrolled
-    ? "bg-neutral-100"
-    : "bg-neutral-100/95 backdrop-blur-md";
+    ? "bg-white"
+    : "bg-white/98 backdrop-blur-md";
 
   const panelText = "text-black";
   const panelChrome = "shadow-xl ring-1 ring-black/10";
@@ -24,7 +30,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
     absolute left-1/2 top-full mt-0 w-[950px] -translate-x-1/2
     opacity-0 pointer-events-none translate-y-2
     group-hover:opacity-100 group-hover:pointer-events-auto group-hover:translate-y-0
-    transition-all duration-200
+    transition-all duration-200 z-50
   `;
 
   const dropdownPad = "px-3.5 py-3";
@@ -236,12 +242,230 @@ export default function Navigation({ scrolled }: NavigationProps) {
               </div>
             </div>
 
-            {/* Mobile menu */}
-            <button className="md:hidden hover:opacity-70">
-              <Menu className="w-5 h-5" />
+            {/* Mobile menu toggle */}
+            <button
+              className="md:hidden hover:opacity-70 transition-opacity"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-black/10 mt-2">
+            <div className="py-4 space-y-1">
+              {/* Products */}
+              <div>
+                <button
+                  onClick={() =>
+                    setExpandedMobileMenu(
+                      expandedMobileMenu === "products" ? null : "products"
+                    )
+                  }
+                  className="w-full flex items-center justify-between px-4 py-3 hover:bg-black/5 rounded-lg transition-colors"
+                >
+                  <span className="text-sm font-light">Products</span>
+                  <ChevronDown
+                    className={`w-4 h-4 opacity-70 transition-transform ${
+                      expandedMobileMenu === "products" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {expandedMobileMenu === "products" && (
+                  <div className="bg-black/2 pl-4 py-2 space-y-2">
+                    <Link
+                      to="/episcalp"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>EpiScalp</div>
+                      <div className="text-xs opacity-70">
+                        Rapid EEG-Based Epilepsy Risk Assessment
+                      </div>
+                    </Link>
+                    <Link
+                      to="/eztrack"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>EZTrack</div>
+                      <div className="text-xs opacity-70">
+                        Simplified EEG Fragility for Surgical Planning
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Clinical */}
+              <div>
+                <button
+                  onClick={() =>
+                    setExpandedMobileMenu(
+                      expandedMobileMenu === "clinical" ? null : "clinical"
+                    )
+                  }
+                  className="w-full flex items-center justify-between px-4 py-3 hover:bg-black/5 rounded-lg transition-colors"
+                >
+                  <span className="text-sm font-light">Clinical</span>
+                  <ChevronDown
+                    className={`w-4 h-4 opacity-70 transition-transform ${
+                      expandedMobileMenu === "clinical" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {expandedMobileMenu === "clinical" && (
+                  <div className="bg-black/2 pl-4 py-2 space-y-2">
+                    <Link
+                      to="/clinical-evidence"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Clinical Evidence</div>
+                      <div className="text-xs opacity-70">
+                        Outcomes and performance results
+                      </div>
+                    </Link>
+                    <Link
+                      to="/publications"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Publications</div>
+                      <div className="text-xs opacity-70">
+                        Papers, posters, and abstracts
+                      </div>
+                    </Link>
+                    <Link
+                      to="/use-cases"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Use Cases</div>
+                      <div className="text-xs opacity-70">
+                        Where it helps most clinically
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Company */}
+              <div>
+                <button
+                  onClick={() =>
+                    setExpandedMobileMenu(
+                      expandedMobileMenu === "company" ? null : "company"
+                    )
+                  }
+                  className="w-full flex items-center justify-between px-4 py-3 hover:bg-black/5 rounded-lg transition-colors"
+                >
+                  <span className="text-sm font-light">Company</span>
+                  <ChevronDown
+                    className={`w-4 h-4 opacity-70 transition-transform ${
+                      expandedMobileMenu === "company" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {expandedMobileMenu === "company" && (
+                  <div className="bg-black/2 pl-4 py-2 space-y-2">
+                    <Link
+                      to="/about-us"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>About Us</div>
+                      <div className="text-xs opacity-70">
+                        Mission, vision, and story
+                      </div>
+                    </Link>
+                    <Link
+                      to="/team"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Team</div>
+                      <div className="text-xs opacity-70">
+                        Leadership and contributors
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Resources */}
+              <div>
+                <button
+                  onClick={() =>
+                    setExpandedMobileMenu(
+                      expandedMobileMenu === "resources" ? null : "resources"
+                    )
+                  }
+                  className="w-full flex items-center justify-between px-4 py-3 hover:bg-black/5 rounded-lg transition-colors"
+                >
+                  <span className="text-sm font-light">Resources</span>
+                  <ChevronDown
+                    className={`w-4 h-4 opacity-70 transition-transform ${
+                      expandedMobileMenu === "resources" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {expandedMobileMenu === "resources" && (
+                  <div className="bg-black/2 pl-4 py-2 space-y-2">
+                    <Link
+                      to="/blog-news"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Blog / News</div>
+                      <div className="text-xs opacity-70">
+                        Updates and announcements
+                      </div>
+                    </Link>
+                    <Link
+                      to="/for-investors"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>For Investors</div>
+                      <div className="text-xs opacity-70">
+                        Investor-relevant information
+                      </div>
+                    </Link>
+                    <Link
+                      to="/support"
+                      className="block px-4 py-2 text-sm font-light hover:bg-black/5 rounded-lg transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div>Support</div>
+                      <div className="text-xs opacity-70">
+                        Help and getting started
+                      </div>
+                    </Link>
+                  </div>
+                )}
+              </div>
+
+              {/* Contact Us */}
+              <div className="pt-2 border-t border-black/10">
+                <Link
+                  to="/Contact-Us"
+                  className="block px-4 py-3 text-sm font-light bg-yellow-400 rounded-lg hover:bg-yellow-300 transition-colors text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
