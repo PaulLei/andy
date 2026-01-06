@@ -176,7 +176,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
                 </Link>
 
                 <div className={dropdownWrapClass}>
-                  <div className="h-3" />
+                  <div className="h-2" />
                   <div
                     className={`rounded-xl ${panelBg} ${panelText} ${panelChrome}`}
                   >
@@ -188,15 +188,6 @@ export default function Navigation({ scrolled }: NavigationProps) {
                           </div>
                           <div className="mt-1 text-xs opacity-70">
                             Updates and announcements
-                          </div>
-                        </Link>
-
-                        <Link to="/for-investors" className={cardClass}>
-                          <div className="text-sm font-light">
-                            For Investors
-                          </div>
-                          <div className="mt-1 text-xs opacity-70">
-                            Investor-relevant information
                           </div>
                         </Link>
 
