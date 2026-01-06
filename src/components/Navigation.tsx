@@ -17,11 +17,11 @@ export default function Navigation({ scrolled }: NavigationProps) {
 
   const navBg = scrolled
     ? "bg-white shadow-md shadow-black/10"
-    : "bg-white/95 backdrop-blur-md";
+    : "bg-white";
 
   const panelBg = scrolled
     ? "bg-white"
-    : "bg-white/98 backdrop-blur-md";
+    : "bg-white";
 
   const panelText = "text-black";
   const panelChrome = "shadow-xl ring-1 ring-black/10";
